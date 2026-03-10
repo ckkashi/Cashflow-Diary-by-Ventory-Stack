@@ -76,7 +76,7 @@ endif; ?>
                         <div>
                             <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Amount</label>
                             <div class="relative">
-                                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold">$</span>
+                                <span class="absolute <?php echo get_lang_dir() === 'rtl' ? 'right-4' : 'left-4'; ?> top-1/2 -translate-y-1/2 text-slate-400 font-bold">$</span>
                                 <input type="number" step="0.01" name="amount" required placeholder="0.00" class="w-full pl-10 pr-4 py-4 rounded-2xl border border-slate-200 focus:ring-2 focus:ring-emerald-500 focus:outline-none transition-all text-xl font-bold">
                             </div>
                         </div>

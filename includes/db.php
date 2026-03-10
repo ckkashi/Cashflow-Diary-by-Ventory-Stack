@@ -31,3 +31,11 @@ require_once __DIR__ . '/helpers.php';
 // Let's call it here but ensure we add csrf_field() to all forms.
 // For now, I'll define it but call it in pages to avoid immediately breaking everything.
 // validate_csrf(); // Uncomment this once all forms have the token
+// 4. Multi-Language Support
+if (isset($_GET['lang']) && in_array($_GET['lang'], ['en', 'ur'])) {
+    $_SESSION['lang'] = $_GET['lang'];
+}
+
+$current_lang = $_SESSION['lang'] ?? 'en';
+$lang_file = __DIR__ . "/../languages/{$current_lang}.php";
+$lang_data = file_exists($lang_file) ? require_once $lang_file : [];

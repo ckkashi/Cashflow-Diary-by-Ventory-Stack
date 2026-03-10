@@ -26,8 +26,8 @@
 
 1.  **Clone the repository**:
     ```bash
-    git clone https://github.com/your-username/cashflow-diary.git
-    cd cashflow-diary
+    git clone https://github.com/ckkashi/Cashflow-Diary-by-Ventory-Stack.git
+    cd Cashflow-Diary-by-Ventory-Stack
     ```
 
 2.  **Environment Setup**:

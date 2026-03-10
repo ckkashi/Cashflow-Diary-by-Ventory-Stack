@@ -91,11 +91,11 @@ for ($i = 5; $i >= 0; $i--) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php echo $current_lang; ?>" dir="<?php echo get_lang_dir(); ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Cashflow Diary</title>
+    <title><?php echo __('dashboard', 'Dashboard'); ?> - <?php echo __('app_name', 'Cashflow Diary'); ?></title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -107,8 +107,8 @@ for ($i = 5; $i >= 0; $i--) {
     <main class="p-4 md:p-10">
         <!-- Dashboard Header -->
         <div class="mb-10">
-            <h1 class="text-3xl font-bold text-slate-900 tracking-tight">Welcome back!</h1>
-            <p class="text-slate-500 mt-1">Here's what's happening with <span class="text-indigo-600 font-bold"><?php echo e($business_name); ?></span> today.</p>
+            <h1 class="text-3xl font-bold text-slate-900 tracking-tight"><?php echo __('welcome_back_dash', 'Welcome back!'); ?></h1>
+            <p class="text-slate-500 mt-1"><?php echo __('heres_happening_with', "Here's what's happening with"); ?> <span class="text-indigo-600 font-bold"><?php echo e($business_name); ?></span> <?php echo __('today', 'today'); ?>.</p>
         </div>
 
         <!-- Summary Cards -->
@@ -118,7 +118,7 @@ for ($i = 5; $i >= 0; $i--) {
                 <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12" /></svg>
                 </div>
-                <p class="text-slate-500 text-sm font-semibold uppercase tracking-wider">Today Income</p>
+                <p class="text-slate-500 text-sm font-semibold uppercase tracking-wider"><?php echo __('today_income', 'Today Income'); ?></p>
                 <p class="text-2xl font-bold text-slate-900 mt-1"><?php echo format_currency($today_income); ?></p>
             </div>
             
@@ -127,7 +127,7 @@ for ($i = 5; $i >= 0; $i--) {
                 <div class="w-12 h-12 bg-rose-50 text-rose-600 rounded-2xl flex items-center justify-center mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 13l-5 5m0 0l-5-5m5 5V6" /></svg>
                 </div>
-                <p class="text-slate-500 text-sm font-semibold uppercase tracking-wider">Today Expense</p>
+                <p class="text-slate-500 text-sm font-semibold uppercase tracking-wider"><?php echo __('today_expense', 'Today Expense'); ?></p>
                 <p class="text-2xl font-bold text-slate-900 mt-1"><?php echo format_currency($today_expense); ?></p>
             </div>
 
@@ -136,7 +136,7 @@ for ($i = 5; $i >= 0; $i--) {
                 <div class="w-12 h-12 bg-indigo-500 text-white rounded-2xl flex items-center justify-center mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                 </div>
-                <p class="text-indigo-200 text-sm font-semibold uppercase tracking-wider">Net Balance</p>
+                <p class="text-indigo-200 text-sm font-semibold uppercase tracking-wider"><?php echo __('net_balance', 'Net Balance'); ?></p>
                 <p class="text-2xl font-bold text-white mt-1"><?php echo format_currency($total_balance); ?></p>
             </div>
 
@@ -145,7 +145,7 @@ for ($i = 5; $i >= 0; $i--) {
                 <div class="w-12 h-12 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 17l-4 4m0 0l-4-4m4 4V3" /></svg>
                 </div>
-                <p class="text-slate-500 text-sm font-semibold uppercase tracking-wider">Udhaar Taken</p>
+                <p class="text-slate-500 text-sm font-semibold uppercase tracking-wider"><?php echo __('udhaar_taken', 'Udhaar Taken'); ?></p>
                 <p class="text-2xl font-bold text-slate-900 mt-1"><?php echo format_currency($udhaar_taken); ?></p>
             </div>
 
@@ -154,7 +154,7 @@ for ($i = 5; $i >= 0; $i--) {
                 <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7l4-4m0 0l4 4m-4-4v18" /></svg>
                 </div>
-                <p class="text-slate-500 text-sm font-semibold uppercase tracking-wider">Udhaar Given</p>
+                <p class="text-slate-500 text-sm font-semibold uppercase tracking-wider"><?php echo __('udhaar_given', 'Udhaar Given'); ?></p>
                 <p class="text-2xl font-bold text-slate-900 mt-1"><?php echo format_currency($udhaar_given); ?></p>
             </div>
         </div>
@@ -163,27 +163,26 @@ for ($i = 5; $i >= 0; $i--) {
             <!-- Charts Section -->
             <div class="lg:col-span-2 space-y-10">
                 <div class="bg-white p-8 rounded-[2.5rem] shadow-sm border border-slate-100">
-                    <h3 class="text-xl font-bold text-slate-800 mb-6">Weekly Expense Trend</h3>
+                    <h3 class="text-xl font-bold text-slate-800 mb-6"><?php echo __('weekly_expense_trend', 'Weekly Expense Trend'); ?></h3>
                     <canvas id="weeklyChart" height="150"></canvas>
                 </div>
 
                 <div class="bg-white p-8 rounded-[2.5rem] shadow-sm border border-slate-100">
-                    <h3 class="text-xl font-bold text-slate-800 mb-6">Monthly Income Analysis</h3>
+                    <h3 class="text-xl font-bold text-slate-800 mb-6"><?php echo __('monthly_income_analysis', 'Monthly Income Analysis'); ?></h3>
                     <canvas id="monthlyChart" height="150"></canvas>
                 </div>
             </div>
 
             <!-- Recent Activity -->
             <div class="bg-white p-8 rounded-[2.5rem] shadow-sm border border-slate-100 h-fit">
-                <h3 class="text-xl font-bold text-slate-800 mb-6">Recent Activity</h3>
+                <h3 class="text-xl font-bold text-slate-800 mb-6"><?php echo __('recent_activity', 'Recent Activity'); ?></h3>
                 <div class="space-y-6">
                     <?php if (empty($recent_activities)): ?>
-                        <p class="text-slate-400 text-center py-10">No recent activity found.</p>
-                    <?php
-else: ?>
+                        <p class="text-slate-400 text-center py-10"><?php echo __('no_recent_activity', 'No recent activity found.'); ?></p>
+                    <?php else: ?>
                         <?php foreach ($recent_activities as $activity): ?>
-                            <div class="flex items-center justify-between group">
-                                <div class="flex items-center space-x-4">
+                            <div class="flex items-center justify-between group<?php echo get_lang_dir() === 'rtl' ? ' flex-row-reverse' : ''; ?>">
+                                <div class="flex items-center space-x-4<?php echo get_lang_dir() === 'rtl' ? ' space-x-reverse' : ''; ?>">
                                     <div class="w-12 h-12 <?php 
                                         if ($activity['type'] == 'income') echo 'bg-emerald-50 text-emerald-600';
                                         elseif ($activity['type'] == 'expense') echo 'bg-rose-50 text-rose-600';
@@ -205,12 +204,10 @@ else: ?>
                                     <?php echo format_currency($activity['amount']); ?>
                                 </span>
                             </div>
-                        <?php
-    endforeach; ?>
-                    <?php
-endif; ?>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>
-                <a href="../income/list.php" class="block text-center mt-10 text-indigo-600 font-bold hover:underline">View All Transactions</a>
+                <a href="../income/list.php" class="block text-center mt-10 text-indigo-600 font-bold hover:underline"><?php echo __('view_all_transactions', 'View All Transactions'); ?></a>
             </div>
         </div>
     </main>

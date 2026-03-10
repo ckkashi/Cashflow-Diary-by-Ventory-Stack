@@ -59,11 +59,11 @@ foreach ($transactions as $tx) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php echo $current_lang; ?>" dir="<?php echo get_lang_dir(); ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Udhaar Report - Cashflow Diary</title>
+    <title><?php echo __('udhaar_report', 'Udhaar Report'); ?> - <?php echo __('app_name', 'Cashflow Diary'); ?></title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -79,19 +79,19 @@ foreach ($transactions as $tx) {
     <main class="p-4 md:p-10">
         <div class="max-w-6xl mx-auto">
             <!-- Header -->
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4 no-print">
-                <div>
-                    <h1 class="text-3xl font-bold text-slate-900 tracking-tight">Udhaar Report</h1>
-                    <p class="text-slate-500 mt-1">Detailed history of credit and debt.</p>
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4 no-print <?php echo get_lang_dir() === 'rtl' ? 'md:flex-row-reverse' : ''; ?>">
+                <div class="<?php echo get_lang_dir() === 'rtl' ? 'text-right' : ''; ?>">
+                    <h1 class="text-3xl font-bold text-slate-900 tracking-tight"><?php echo __('udhaar_report', 'Udhaar Report'); ?></h1>
+                    <p class="text-slate-500 mt-1"><?php echo __('udhaar_report_desc', 'Credit and debt history filtered by contact.'); ?></p>
                 </div>
-                <div class="flex space-x-3">
+                <div class="flex items-center <?php echo get_lang_dir() === 'rtl' ? 'space-x-reverse' : ''; ?> space-x-3">
                     <button onclick="window.print()" class="bg-white border border-slate-200 text-slate-700 px-6 py-2 rounded-xl font-bold hover:bg-slate-50 transition-all flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" /></svg>
-                        Print
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 <?php echo get_lang_dir() === 'rtl' ? 'ml-2' : 'mr-2'; ?>" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" /></svg>
+                        <?php echo __('print', 'Print'); ?>
                     </button>
                     <a href="?<?php echo http_build_query(array_merge($_GET, ['export' => 'csv'])); ?>" class="bg-amber-600 text-white px-6 py-2 rounded-xl font-bold hover:bg-amber-700 transition-all flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-                        Export CSV
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 <?php echo get_lang_dir() === 'rtl' ? 'ml-2' : 'mr-2'; ?>" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                        <?php echo __('export_csv', 'Export CSV'); ?>
                     </a>
                 </div>
             </div>
@@ -99,18 +99,18 @@ foreach ($transactions as $tx) {
             <!-- Filters -->
             <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm mb-8 no-print">
                 <form class="grid grid-cols-1 md:grid-cols-4 gap-6 items-end">
-                    <div>
-                        <label class="block text-xs font-bold text-slate-400 uppercase mb-2">From Date</label>
+                    <div class="<?php echo get_lang_dir() === 'rtl' ? 'text-right' : ''; ?>">
+                        <label class="block text-xs font-bold text-slate-400 uppercase mb-2"><?php echo __('from_date', 'From Date'); ?></label>
                         <input type="date" name="from_date" value="<?php echo $from_date; ?>" class="w-full px-4 py-2 rounded-xl border border-slate-200 focus:ring-2 focus:ring-amber-500 outline-none">
                     </div>
-                    <div>
-                        <label class="block text-xs font-bold text-slate-400 uppercase mb-2">To Date</label>
+                    <div class="<?php echo get_lang_dir() === 'rtl' ? 'text-right' : ''; ?>">
+                        <label class="block text-xs font-bold text-slate-400 uppercase mb-2"><?php echo __('to_date', 'To Date'); ?></label>
                         <input type="date" name="to_date" value="<?php echo $to_date; ?>" class="w-full px-4 py-2 rounded-xl border border-slate-200 focus:ring-2 focus:ring-amber-500 outline-none">
                     </div>
-                    <div>
-                        <label class="block text-xs font-bold text-slate-400 uppercase mb-2">Contact</label>
+                    <div class="<?php echo get_lang_dir() === 'rtl' ? 'text-right' : ''; ?>">
+                        <label class="block text-xs font-bold text-slate-400 uppercase mb-2"><?php echo __('contact', 'Contact'); ?></label>
                         <select name="contact_id" class="w-full px-4 py-2 rounded-xl border border-slate-200 focus:ring-2 focus:ring-amber-500 outline-none">
-                            <option value="">All Contacts</option>
+                            <option value=""><?php echo __('all_contacts', 'All Contacts'); ?></option>
                             <?php foreach ($contacts as $c): ?>
                                 <option value="<?php echo $c['id']; ?>" <?php echo $contact_id == $c['id'] ? 'selected' : ''; ?>><?php echo e($c['name']); ?></option>
                             <?php
@@ -118,7 +118,7 @@ endforeach; ?>
                         </select>
                     </div>
                     <div>
-                        <button type="submit" class="w-full bg-slate-900 text-white py-2 rounded-xl font-bold hover:bg-slate-800 transition-all">Generate Report</button>
+                        <button type="submit" class="w-full bg-slate-900 text-white py-2 rounded-xl font-bold hover:bg-slate-800 transition-all"><?php echo __('generate_report', 'Generate Report'); ?></button>
                     </div>
                 </form>
             </div>
@@ -126,44 +126,44 @@ endforeach; ?>
             <!-- Report Content -->
             <div class="bg-white rounded-[2.5rem] border border-slate-200 shadow-sm overflow-hidden print-container">
                 <div class="p-10 border-b border-slate-100 grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <div>
-                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Given</p>
-                        <p class="text-xl font-bold text-slate-900"><?php echo format_currency($summary['given']); ?></p>
+                    <div class="<?php echo get_lang_dir() === 'rtl' ? 'text-right' : ''; ?>">
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest"><?php echo __('given', 'Given'); ?></p>
+                        <p class="text-xl font-bold text-slate-900" dir="ltr"><?php echo format_currency($summary['given']); ?></p>
                     </div>
-                    <div>
-                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Received</p>
-                        <p class="text-xl font-bold text-emerald-600"><?php echo format_currency($summary['received']); ?></p>
+                    <div class="<?php echo get_lang_dir() === 'rtl' ? 'text-right' : ''; ?>">
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest"><?php echo __('received', 'Received'); ?></p>
+                        <p class="text-xl font-bold text-emerald-600" dir="ltr"><?php echo format_currency($summary['received']); ?></p>
                     </div>
-                    <div>
-                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Borrowed</p>
-                        <p class="text-xl font-bold text-rose-600"><?php echo format_currency($summary['borrowed']); ?></p>
+                    <div class="<?php echo get_lang_dir() === 'rtl' ? 'text-right' : ''; ?>">
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest"><?php echo __('borrowed', 'Borrowed'); ?></p>
+                        <p class="text-xl font-bold text-rose-600" dir="ltr"><?php echo format_currency($summary['borrowed']); ?></p>
                     </div>
-                    <div>
-                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Repaid</p>
-                        <p class="text-xl font-bold text-slate-900"><?php echo format_currency($summary['repaid']); ?></p>
+                    <div class="<?php echo get_lang_dir() === 'rtl' ? 'text-right' : ''; ?>">
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest"><?php echo __('repaid', 'Repaid'); ?></p>
+                        <p class="text-xl font-bold text-slate-900" dir="ltr"><?php echo format_currency($summary['repaid']); ?></p>
                     </div>
                 </div>
 
                 <div class="overflow-x-auto">
-                    <table class="w-full text-left">
+                    <table class="w-full <?php echo get_lang_dir() === 'rtl' ? 'text-right' : 'text-left'; ?>">
                         <thead>
                             <tr class="bg-slate-50 text-slate-400 text-xs font-bold uppercase tracking-wider">
-                                <th class="px-10 py-4">Date</th>
-                                <th class="px-10 py-4">Contact</th>
-                                <th class="px-10 py-4">Type</th>
-                                <th class="px-10 py-4 text-right">Amount</th>
+                                <th class="px-10 py-4"><?php echo __('date', 'Date'); ?></th>
+                                <th class="px-10 py-4"><?php echo __('contact', 'Contact'); ?></th>
+                                <th class="px-10 py-4"><?php echo __('type', 'Type'); ?></th>
+                                <th class="px-10 py-4 text-right"><?php echo __('amount', 'Amount'); ?></th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-slate-100">
                             <?php if (empty($transactions)): ?>
                                 <tr>
-                                    <td colspan="4" class="px-10 py-20 text-center text-slate-400">No records found for this period.</td>
+                                    <td colspan="4" class="px-10 py-20 text-center text-slate-400"><?php echo __('no_records_found_period', 'No records found for this period.'); ?></td>
                                 </tr>
                             <?php
 else: ?>
                                 <?php foreach ($transactions as $row): ?>
                                     <tr class="hover:bg-slate-50 transition-colors">
-                                        <td class="px-10 py-4 text-sm whitespace-nowrap"><?php echo format_date($row['date']); ?></td>
+                                        <td class="px-10 py-4 text-sm whitespace-nowrap" dir="ltr"><?php echo format_date($row['date']); ?></td>
                                         <td class="px-10 py-4 font-bold text-slate-700"><?php echo e($row['contact_name']); ?></td>
                                         <td class="px-10 py-4">
                                             <span class="text-xs font-bold uppercase tracking-tighter <?php
@@ -175,9 +175,9 @@ else: ?>
             echo 'text-rose-500';
         else
             echo 'text-slate-500';
-?>"><?php echo e($row['type']); ?></span>
+?>"><?php echo __($row['type'], ucfirst($row['type'])); ?></span>
                                         </td>
-                                        <td class="px-10 py-4 text-right font-bold text-slate-900"><?php echo format_currency($row['amount']); ?></td>
+                                        <td class="px-10 py-4 text-right font-bold text-slate-900" dir="ltr"><?php echo format_currency($row['amount']); ?></td>
                                     </tr>
                                 <?php
     endforeach; ?>
@@ -188,7 +188,7 @@ endif; ?>
                 </div>
 
                 <div class="p-10 bg-slate-50/50 text-center hidden print:block">
-                    <p class="text-xs text-slate-400">Computer generated report by Cashflow Diary by Ventory Stack</p>
+                    <p class="text-xs text-slate-400"><?php echo __('computer_generated_report', 'Computer generated report by Cashflow Diary by Ventory Stack'); ?></p>
                 </div>
             </div>
         </div>

@@ -1,9 +1,9 @@
 <?php
-require_once '../includes/db.php';
+require_once __DIR__ . '/../includes/db.php';
 
 // Redirect to dashboard if already logged in
 if (isset($_SESSION['user_id'])) {
-    header('Location: ../dashboard/index.php');
+    header('Location: /cashflow/dashboard');
     exit;
 }
 
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt->execute([$user_id]);
 
                 $success = 'Successfully registered! You can now login.';
-                header('refresh:2;url=login.php');
+                header('refresh:2;url=/cashflow/login');
             }
             else {
                 $error = 'Registration failed. Please try again.';
@@ -115,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="mt-10 text-center">
             <p class="text-sm font-bold text-slate-400">
                 <?php echo __('already_have_account', 'Already have an account?'); ?> 
-                <a href="login.php" class="text-indigo-600 hover:text-indigo-700 underline underline-offset-4 decoration-2 decoration-indigo-100 hover:decoration-indigo-600 transition-all"><?php echo __('sign_in', 'Sign In'); ?></a>
+                <a href="/cashflow/login" class="text-indigo-600 hover:text-indigo-700 underline underline-offset-4 decoration-2 decoration-indigo-100 hover:decoration-indigo-600 transition-all"><?php echo __('sign_in', 'Sign In'); ?></a>
             </p>
         </div>
     </div>

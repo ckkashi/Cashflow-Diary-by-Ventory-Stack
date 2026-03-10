@@ -1,5 +1,5 @@
 <?php
-require_once '../includes/navbar.php';
+require_once __DIR__ . '/../includes/navbar.php';
 
 $user_id = $_SESSION['user_id'];
 $business_id = $_SESSION['business_id'] ?? null;

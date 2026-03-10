@@ -1,8 +1,8 @@
 <?php
-require_once 'db.php';
+require_once __DIR__ . '/db.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header('Location: ../login.php');
+    header('Location: /cashflow/login');
     exit;
 }
 
@@ -101,13 +101,13 @@ $nav_items = get_nav_items();
             
             <div class="absolute <?php echo get_lang_dir() === 'rtl' ? 'right-0' : 'left-0'; ?> right-0 mt-2 bg-white dark:bg-dark-card border dark:border-dark-border rounded-2xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50 overflow-hidden">
                 <?php foreach ($businesses as $biz): ?>
-                    <a href="../businesses/switch.php?id=<?php echo $biz['id']; ?>" class="flex items-center space-x-3 p-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors<?php echo get_lang_dir() === 'rtl' ? ' space-x-reverse' : ''; ?>">
+                    <a href="/cashflow/businesses/switch?id=<?php echo $biz['id']; ?>" class="flex items-center space-x-3 p-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors<?php echo get_lang_dir() === 'rtl' ? ' space-x-reverse' : ''; ?>">
                         <div class="w-8 h-8 bg-slate-100 dark:bg-slate-700 text-slate-500 rounded-lg flex items-center justify-center font-bold"><?php echo strtoupper(substr($biz['name'], 0, 1)); ?></div>
                         <span class="text-sm font-medium text-slate-700 dark:text-slate-300"><?php echo e($biz['name']); ?></span>
                     </a>
                 <?php endforeach; ?>
                 <div class="p-2 border-t dark:border-dark-border bg-slate-50 dark:bg-slate-800">
-                    <a href="../businesses/add.php" class="flex items-center justify-center p-3 text-indigo-600 font-bold text-xs uppercase tracking-widest hover:bg-white dark:hover:bg-dark-card rounded-xl transition-all">
+                    <a href="/cashflow/businesses/add" class="flex items-center justify-center p-3 text-indigo-600 font-bold text-xs uppercase tracking-widest hover:bg-white dark:hover:bg-dark-card rounded-xl transition-all">
                         + <?php echo __('create_business', 'Create Business'); ?>
                     </a>
                 </div>
@@ -149,7 +149,7 @@ $nav_items = get_nav_items();
             </div>
         </button>
 
-        <a href="../auth/logout.php" class="flex items-center space-x-4 px-4 py-4 rounded-2xl font-bold text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-900/20 transition-all <?php echo get_lang_dir() === 'rtl' ? 'space-x-reverse flex-row-reverse' : ''; ?>">
+        <a href="/cashflow/logout" class="flex items-center space-x-4 px-4 py-4 rounded-2xl font-bold text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-900/20 transition-all <?php echo get_lang_dir() === 'rtl' ? 'space-x-reverse flex-row-reverse' : ''; ?>">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 <?php echo get_lang_dir() === 'rtl' ? 'rotate-180' : ''; ?>" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" /></svg>
             <span><?php echo __('logout', 'Logout'); ?></span>
         </a>
@@ -161,14 +161,14 @@ $nav_items = get_nav_items();
 <div class="fixed bottom-8 <?php echo get_lang_dir() === 'rtl' ? 'left-8' : 'right-8'; ?> z-[100] group">
     <!-- Buttons Menu -->
     <div id="fab-menu" class="flex flex-col-reverse items-center mb-4 space-y-reverse space-y-3 opacity-0 invisible translate-y-4 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300">
-        <a href="../expenses/add.php" title="Add Expense" class="w-12 h-12 bg-rose-500 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+        <a href="/cashflow/expenses/add" title="Add Expense" class="w-12 h-12 bg-rose-500 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
         </a>
-        <a href="../income/add.php" title="Add Income" class="w-12 h-12 bg-emerald-500 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        <a href="/cashflow/income/add" title="Add Income" class="w-12 h-12 bg-emerald-500 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-41 w-64" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
         </a>
-        <a href="../udhaar/add.php" title="Add Udhaar" class="w-12 h-12 bg-amber-500 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+        <a href="/cashflow/udhaar/add" title="Add Udhaar" class="w-12 h-12 bg-amber-500 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-100" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
         </a>
     </div>
     

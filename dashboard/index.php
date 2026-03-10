@@ -1,5 +1,5 @@
 <?php
-require_once '../includes/navbar.php';
+require_once __DIR__ . '/../includes/navbar.php';
 
 $user_id = $_SESSION['user_id'];
 $business_id = $_SESSION['business_id'] ?? null;
@@ -207,7 +207,7 @@ for ($i = 5; $i >= 0; $i--) {
                         <?php endforeach; ?>
                     <?php endif; ?>
                 </div>
-                <a href="../income/list.php" class="block text-center mt-10 text-indigo-600 font-bold hover:underline"><?php echo __('view_all_transactions', 'View All Transactions'); ?></a>
+                <a href="/cashflow/income" class="block text-center mt-10 text-indigo-600 font-bold hover:underline"><?php echo __('view_all_transactions', 'View All Transactions'); ?></a>
             </div>
         </div>
     </main>

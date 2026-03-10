@@ -1,0 +1,12 @@
+RewriteEngine On
+RewriteBase /cashflow/
+
+# Disable directory indexing
+Options -Indexes
+
+# Stop processing if it's an actual file
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# Redirect all other requests to index.php
+RewriteRule ^ index.php [L,QSA]

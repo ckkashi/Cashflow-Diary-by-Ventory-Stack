@@ -1,5 +1,5 @@
 <?php
-require_once '../includes/navbar.php';
+require_once __DIR__ . '/../includes/navbar.php';
 
 $user_id = $_SESSION['user_id'];
 $business_id = $_SESSION['business_id'] ?? null;
@@ -86,7 +86,7 @@ foreach ($transactions as $tx) {
                 </div>
                 <div class="flex items-center <?php echo get_lang_dir() === 'rtl' ? 'space-x-reverse' : ''; ?> space-x-3">
                     <button onclick="window.print()" class="bg-white border border-slate-200 text-slate-700 px-6 py-2 rounded-xl font-bold hover:bg-slate-50 transition-all flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 <?php echo get_lang_dir() === 'rtl' ? 'ml-2' : 'mr-2'; ?>" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" /></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 <?php echo get_lang_dir() === 'rtl' ? 'ml-2' : 'mr-2'; ?>" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 00-2 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" /></svg>
                         <?php echo __('print', 'Print'); ?>
                     </button>
                     <a href="?<?php echo http_build_query(array_merge($_GET, ['export' => 'csv'])); ?>" class="bg-amber-600 text-white px-6 py-2 rounded-xl font-bold hover:bg-amber-700 transition-all flex items-center">
@@ -167,15 +167,15 @@ else: ?>
                                         <td class="px-10 py-4 font-bold text-slate-700"><?php echo e($row['contact_name']); ?></td>
                                         <td class="px-10 py-4">
                                             <span class="text-xs font-bold uppercase tracking-tighter <?php
-        if ($row['type'] == 'given')
-            echo 'text-blue-500';
-        elseif ($row['type'] == 'received')
-            echo 'text-emerald-500';
-        elseif ($row['type'] == 'borrowed')
-            echo 'text-rose-500';
-        else
-            echo 'text-slate-500';
-?>"><?php echo __($row['type'], ucfirst($row['type'])); ?></span>
+                                                if ($row['type'] == 'given')
+                                                    echo 'text-blue-500';
+                                                elseif ($row['type'] == 'received')
+                                                    echo 'text-emerald-500';
+                                                elseif ($row['type'] == 'borrowed')
+                                                    echo 'text-rose-500';
+                                                else
+                                                    echo 'text-slate-500';
+                                            ?>"><?php echo __($row['type'], ucfirst($row['type'])); ?></span>
                                         </td>
                                         <td class="px-10 py-4 text-right font-bold text-slate-900" dir="ltr"><?php echo format_currency($row['amount']); ?></td>
                                     </tr>

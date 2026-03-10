@@ -1,9 +1,9 @@
 <?php
-require_once '../includes/db.php';
+require_once __DIR__ . '/../includes/db.php';
 
 // Redirect to dashboard if already logged in
 if (isset($_SESSION['user_id'])) {
-    header('Location: ../dashboard/index.php');
+    header('Location: /cashflow/dashboard');
     exit;
 }
 
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['business_id'] = $business['id'];
             }
 
-            header('Location: ../dashboard/index.php');
+            header('Location: /cashflow/dashboard');
             exit;
         }
         else {
@@ -99,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="mt-12 text-center">
             <p class="text-sm font-bold text-slate-400">
                 <?php echo __('new_here', 'New here?'); ?> 
-                <a href="register.php" class="text-indigo-600 hover:text-indigo-700 underline underline-offset-4 decoration-2 decoration-indigo-100 hover:decoration-indigo-600 transition-all"><?php echo __('create_account', 'Create Account'); ?></a>
+                <a href="/cashflow/register" class="text-indigo-600 hover:text-indigo-700 underline underline-offset-4 decoration-2 decoration-indigo-100 hover:decoration-indigo-600 transition-all"><?php echo __('create_account', 'Create Account'); ?></a>
             </p>
         </div>
     </div>

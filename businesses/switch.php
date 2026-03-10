@@ -1,5 +1,6 @@
 <?php
-require_once '../includes/config_check.php';
+require_once __DIR__ . '/../includes/db.php';
+require_once __DIR__ . '/../includes/config_check.php';
 session_start();
 
 // Redirect to login if not logged in
